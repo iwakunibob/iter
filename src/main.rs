@@ -16,7 +16,10 @@ fn main() {
     // shorten_strings(&mut colors);
     // print_elements(&colors);
     shorten_strings(&mut colors[1..3]);
-    print_elements(&colors[1..3]);           
+    print_elements(&colors[1..3]);  
+    let mut destination = vec![];
+    move_elements(colors, &mut destination);
+    print_elements(&destination);
 }
 fn print_elements(elements: &[String]) {
     for element in elements { print!("#{}, ", element);}
@@ -38,3 +41,7 @@ fn to_uppercase_new(elements: &[String]) -> Vec<String> {
     elements.iter().map(|element| element.to_uppercase()).collect()
 
 }
+fn move_elements(vec_a: Vec<String>, vec_b: &mut Vec<String>) {
+    vec_a.into_iter().for_each(|element| vec_b.push(element));
+}
+
